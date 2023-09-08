@@ -1,1 +1,19 @@
+Restart System, Once restarted use down arrow key to select the rescue/recovery partition. Press the e key on keyboard
+Change Root
+
+Type Rd.break at the end of the line seen below. Once Entered use ctrl-x key
+Change Root-1
+
+Now at bash# prompt Enter the following commands
+
+Change Root-2
+
+mount -o remount,rw /sysroot
+chroot /sysroot
+passwd root --stdin (using command you can see your pw)
+redhat123
+touch /.autorelabel
+exit
+exit
+
 
