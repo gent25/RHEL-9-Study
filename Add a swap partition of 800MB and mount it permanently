@@ -1,0 +1,16 @@
+Add a swap partition of 800MB and mount it permanently
+
+--------------------------------------------------------------------------
+Answer*
+
+lsblk (check drives disc mounted to workstation)
+fdisk /dev/vdb  n  hit enter  hit enter+800M
+t for type 
+press enter 82 swap and enter w to write to disc 
+mkswap /dev/vdb2
+vim /etc/fstab (make persistent entry)
+/dev/vdb2 swap swap defaults 0 0
+mount -a
+swapon -a (mounts swap) 
+swapon -s  (shows the new swap part added)
+free -h (checks swap size
