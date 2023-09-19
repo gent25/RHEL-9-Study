@@ -1,0 +1,27 @@
+Use URL or  link from question to build image named test_image
+
+Create Container from file. 
+
+vim Containerfile  (Used to create containerfile) 
+FROM docker.io/centos/httpd-24-centos7
+LABEL maintainer="Linux2Cloud"
+
+-----------------------------------------------------------------------------------
+*Answer 
+ssh user1@localhost
+mkdir mycontainer
+cd mycontainer  
+wget http://testcontainerfile.com/  (will download Container file from Url this is just an example)
+ls -ltr (check contents for mycontainer directory)
+podman built -t test_image . (builds image)
+
+OR build manually using Vim...  
+
+ssh user1@localhost   (ssh to workstation)
+mkdir Containers (Create a directory for Containerfile)
+vim Containerfile 
+FROM docker.io/centos/httpd-24-centos7
+LABEL maintainer="Linux2Cloud"
+
+podman built -t test_image .  (-t used to name container)
+podman images  (see the image created with name you set. 
