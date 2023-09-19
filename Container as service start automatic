@@ -1,0 +1,35 @@
+(Instructions) 
+- Create a Container name test_image
+
+- Use monitor image for test_image 
+  
+- Create a systemd services name container-asciipdf for
+  user1. Service will automatically started
+  accross reboot do no any manual instrument.
+  
+- Local host Directory /opt/files attach to Container
+  directory/opt/incoming.
+  
+- Local host Directory /opt/processed attach to container
+  host directory /opt/outgoing
+
+--------------------------------------------------------------------------
+*Answer
+mkdir /opt/files
+mkdir /opt/processed
+chown user1:user1 /opt/files         (guves user1 ownership of /opt/files)
+chown user1:user1 /opt/processed     (gives user1 ownership of /opt/processed)
+
+podman run -d --name test_image -v /opt/files/:/opt/incoming/:Z -v /opt/processed/:/opt/outgoing:Z localhost/test_image
+
+loginctl show-user user1
+loginctl enable-linger  (enables linger for current user)
+loginctl show-user user1
+mkdir -p ~/.config.systemd/user
+cd ~/.config.systemd/user
+podman generate systemd --name test_image -files
+ls (see files created)
+podman ps  (shows image created)
+podman stop test_image
+systemctl --user start container-test_image.service
+systemctl --user enable container-test_image.service  
