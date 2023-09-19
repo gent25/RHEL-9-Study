@@ -21,7 +21,7 @@ chown user1:user1 /opt/files         (guves user1 ownership of /opt/files)
 chown user1:user1 /opt/processed     (gives user1 ownership of /opt/processed)
 
 podman run -d --name test_image -v /opt/files/:/opt/incoming/:Z -v /opt/processed/:/opt/outgoing:Z localhost/test_image
-
+ssh user1@localhost
 loginctl show-user user1
 loginctl enable-linger  (enables linger for current user)
 loginctl show-user user1
