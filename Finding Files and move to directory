@@ -2,5 +2,5 @@ Find all files and directories which is created by a user copy into a /root/user
 
 -----------------------------------------------------------------------------------------------------------------
 answer*
-find / -user user1 -type f -exec -cp -rvp {} /root/user1files/ \;  (moves files owned by /root/user1files)
+find / -user user1 -type f -exec cp -rvp {} /root/user1files/ \;  (moves files owned by /root/user1files)
 mkdir /root/user1/user1files (create directory for files) 
