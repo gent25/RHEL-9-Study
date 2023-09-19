@@ -1,0 +1,14 @@
+(A) Group ownership of /common/admin is admin
+(B) Directory should be readable, writeable and accessible to members of the admin group, but not any other user.
+(C) Files created in /common/admin automatically have group ownership set to the admin group.
+
+
+-------------------------------------------------------------------------------------------------------------------------
+Answer:
+mkdir -p /common/admin  (-p=parent directory)
+chgrp  admin /common/admin  
+chmod 770 /common/admin   (changes permissions)
+ls -ld  /common/admin   (check permissions on directory)
+su - user1
+touch /common/admin/file1
+ls -ltr /common/admin/file1  (will show permissions) 
